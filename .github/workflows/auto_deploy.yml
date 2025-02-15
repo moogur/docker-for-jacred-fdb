@@ -1,0 +1,14 @@
+name: Auto deploy
+
+on:
+  schedule:
+    - cron: "0 2 * * 5"
+
+jobs:
+  auto_deploy:
+    uses: moogur/all-workflows/.github/workflows/auto_deploy_for_docker_container.yml@master
+    secrets: inherit
+    with:
+      repository_url: "https://github.com/immisterio/jacred-fdb"
+      environment: DEPLOY
+      type: "tag"
